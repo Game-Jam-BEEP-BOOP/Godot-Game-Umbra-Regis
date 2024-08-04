@@ -1,0 +1,131 @@
+[gd_scene load_steps=15 format=3 uid="uid://uq1e0pfsruu"]
+
+[ext_resource type="Script" path="res://Main/GUI/Alchemy/ingredient_1.gd" id="1_7880f"]
+[ext_resource type="Texture2D" uid="uid://blam8p827iikn" path="res://Art/Items/blank.png" id="2_uf2xi"]
+[ext_resource type="Texture2D" uid="uid://whfl1rudbat3" path="res://Art/Items/Alchemy Items/10.png" id="2_w1mmw"]
+[ext_resource type="Texture2D" uid="uid://ewodenroyd24" path="res://Art/Items/Alchemy Items/1.png" id="3_2d2u5"]
+[ext_resource type="Texture2D" uid="uid://b8umu10owobpi" path="res://Art/Items/Alchemy Items/2.png" id="4_7k7vt"]
+[ext_resource type="Texture2D" uid="uid://csghl5hkw357l" path="res://Art/Items/Alchemy Items/metal scrap pick up.png" id="5_fs76g"]
+[ext_resource type="Texture2D" uid="uid://ccq4srdispcas" path="res://Art/Items/Alchemy Items/phantom_steel.png" id="7_g2a2g"]
+[ext_resource type="Texture2D" uid="uid://b3lt82bw0ece2" path="res://Art/Items/Alchemy Items/17.png" id="8_oixui"]
+[ext_resource type="Texture2D" uid="uid://djpf3vvjx3txo" path="res://Art/Items/Alchemy Items/rock to pick up.png" id="9_6ljdf"]
+[ext_resource type="Texture2D" uid="uid://doao6w28lrg52" path="res://Art/Items/Alchemy Items/steel.png" id="10_j2frb"]
+[ext_resource type="Texture2D" uid="uid://vjc6g2u5u5ht" path="res://Art/Items/Alchemy Items/wood plank.png" id="11_28hr2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b67jy"]
+bg_color = Color(0.37, 0.37, 0.37, 0.819608)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chmfr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hj13s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w1mmw")
+}],
+"loop": true,
+"name": &"ajuga",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2d2u5")
+}],
+"loop": true,
+"name": &"brugmansia",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7k7vt")
+}],
+"loop": true,
+"name": &"hyssop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_fs76g")
+}],
+"loop": true,
+"name": &"metal_scraps",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uf2xi")
+}],
+"loop": true,
+"name": &"no pick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_g2a2g")
+}],
+"loop": true,
+"name": &"phantom_steel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_oixui")
+}],
+"loop": true,
+"name": &"queen_of_the_night",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6ljdf")
+}],
+"loop": true,
+"name": &"rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_j2frb")
+}],
+"loop": true,
+"name": &"steel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_28hr2")
+}],
+"loop": true,
+"name": &"wood",
+"speed": 5.0
+}]
+
+[node name="Ingredient 3" type="Panel"]
+offset_left = 376.0
+offset_top = 376.0
+offset_right = 448.0
+offset_bottom = 438.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b67jy")
+script = ExtResource("1_7880f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_chmfr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(34, 30)
+sprite_frames = SubResource("SpriteFrames_hj13s")
+animation = &"wood"
+autoplay = "no pick"

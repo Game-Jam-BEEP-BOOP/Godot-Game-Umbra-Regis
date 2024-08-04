@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7vdo3h1so01c"]
+
+[ext_resource type="Texture2D" uid="uid://co0434np6q3ob" path="res://Art/Level Assets/Phasable_Wall_Temp.png" id="1_0f70n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0606i"]
+size = Vector2(31.5, 62.5625)
+
+[node name="Phasable Wall" type="Area2D"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0606i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8.75, -0.500001)
+scale = Vector2(0.349719, 0.35248)
+texture = ExtResource("1_0f70n")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://67pv6v20o5l5"]
+
+[ext_resource type="Script" path="res://Main/GUI/Inventory/instantiation_no_breathing_(resources).gd" id="1_sndgi"]
+[ext_resource type="PackedScene" uid="uid://c3om0flnjs7pt" path="res://Items/Resources/Objects/resources.tscn" id="2_ge6j4"]
+
+[node name="Resource Instantiator" type="Node"]
+script = ExtResource("1_sndgi")
+
+[node name="Resources" parent="." groups=["resources"] instance=ExtResource("2_ge6j4")]
+visible = false
+position = Vector2(207, 761)
+item = {
+0: "metal_scraps"
+}

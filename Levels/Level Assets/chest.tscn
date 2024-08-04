@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://1ljevj8u5f0p"]
+
+[ext_resource type="Script" path="res://Levels/Level Assets/chest.gd" id="1_4u8f7"]
+[ext_resource type="Script" path="res://Levels/LevelScripts/ChestToggleInventory.gd" id="1_rus5d"]
+[ext_resource type="PackedScene" uid="uid://sj0m3jk8t1w4" path="res://Main/GUI/Inventory/inventory.tscn" id="1_w7adn"]
+[ext_resource type="Script" path="res://Main/GUI/Inventory/inventory settings.gd" id="3_eeig6"]
+[ext_resource type="Script" path="res://Levels/Level Assets/OpeningArea.gd" id="4_og2be"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s0qjo"]
+load_path = "res://.godot/imported/Chest_temp.png-053f309ef08bc6c7a71783d8c0ca991c.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d5mcr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_s0qjo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6e1f"]
+size = Vector2(325, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sljw"]
+size = Vector2(170, 92)
+
+[node name="Chest" type="StaticBody2D" groups=["Objects"]]
+position = Vector2(7, 6)
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("1_4u8f7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("1_rus5d")
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("1_w7adn")]
+process_mode = 3
+visible = false
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 452.0
+offset_bottom = 232.0
+script = ExtResource("3_eeig6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d5mcr")
+
+[node name="OpeningArea" type="Area2D" parent="." groups=["Objects"]]
+process_mode = 3
+collision_layer = 64
+script = ExtResource("4_og2be")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningArea"]
+position = Vector2(-4.5, -26)
+shape = SubResource("RectangleShape2D_m6e1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 1)
+shape = SubResource("RectangleShape2D_2sljw")

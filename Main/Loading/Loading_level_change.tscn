@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://br77e57v564fv"]
+
+[ext_resource type="Script" path="res://Main/Loading/Loading_level_change.gd" id="1_7ge55"]
+[ext_resource type="Texture2D" uid="uid://dt70hftpojvj2" path="res://Art/Background/loading/Loading BG.png" id="2_kw8x6"]
+[ext_resource type="Texture2D" uid="uid://d0d1jwt6ueqab" path="res://Art/Background/loading/Loading image.png" id="3_qefok"]
+[ext_resource type="Texture2D" uid="uid://qd3cwaslawlk" path="res://Art/Background/loading/L.png" id="4_veghm"]
+[ext_resource type="Texture2D" uid="uid://b8heke3v5k3b0" path="res://Art/Background/loading/LO.png" id="5_s5r5x"]
+[ext_resource type="Texture2D" uid="uid://btlblekoswf74" path="res://Art/Background/loading/LOA.png" id="6_0n8yn"]
+[ext_resource type="Texture2D" uid="uid://cobjjyk6k44t8" path="res://Art/Background/loading/LOAD.png" id="7_jekm7"]
+[ext_resource type="Texture2D" uid="uid://w725kcwh6x8m" path="res://Art/Background/loading/LOADI.png" id="8_qjqss"]
+[ext_resource type="Texture2D" uid="uid://pb40ifvsnu6b" path="res://Art/Background/loading/LOADIN.png" id="9_8qoea"]
+[ext_resource type="Texture2D" uid="uid://cdp01syeb8sd7" path="res://Art/Background/loading/LOADING.png" id="10_3308e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_imqml"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibuji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_veghm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s5r5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0n8yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jekm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qjqss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8qoea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3308e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtqrg"]
+
+[node name="Loading Level Change" type="Node2D"]
+script = ExtResource("1_7ge55")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 1168.0
+offset_bottom = 676.0
+texture = ExtResource("2_kw8x6")
+
+[node name="lil man" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="lil man"]
+position = Vector2(1021, 526)
+texture = ExtResource("3_qefok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lil man"]
+shape = SubResource("CircleShape2D_imqml")
+
+[node name="Loading" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Loading"]
+position = Vector2(1026, 615)
+scale = Vector2(1.17683, 1.375)
+sprite_frames = SubResource("SpriteFrames_ibuji")
+autoplay = "default"
+frame_progress = 0.773779
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Loading"]
+shape = SubResource("RectangleShape2D_dtqrg")

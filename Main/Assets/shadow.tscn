@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://yak1bq7ee0g"]
+
+[ext_resource type="Texture2D" uid="uid://blcy0w6bengfb" path="res://Art/Shadow/Shadow  TEMP.png" id="1_yfh0e"]
+[ext_resource type="Script" path="res://Main/Assets/Shadow.gd" id="2_46ei8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lofa3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yfh0e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikr5d"]
+size = Vector2(826, 288)
+
+[node name="Shadow" type="Area2D"]
+collision_layer = 2
+script = ExtResource("2_46ei8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1556, 142)
+scale = Vector2(3.40741, 1.3242)
+sprite_frames = SubResource("SpriteFrames_lofa3")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1556, 142)
+shape = SubResource("RectangleShape2D_ikr5d")

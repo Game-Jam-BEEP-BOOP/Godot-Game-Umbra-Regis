@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciall6eo2spop"]
+
+[ext_resource type="Script" path="res://Main/GUI/slot.gd" id="1_4evbl"]
+[ext_resource type="Texture2D" uid="uid://c3wwk4ujo2ywn" path="res://Art/GUI Kinda Thing/K both panel temp inv.png" id="1_gtlor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cct5f"]
+size = Vector2(60, 50)
+
+[node name="Slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 50)
+offset_right = 60.0
+offset_bottom = 50.0
+script = ExtResource("1_4evbl")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.0925926, 0.0771605)
+texture = ExtResource("1_gtlor")
+centered = false
+vframes = 2
+frame = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 50.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Item" type="Sprite2D" parent="CenterContainer/Panel"]
+scale = Vector2(0.35, 0.35)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(30, 25)
+shape = SubResource("RectangleShape2D_cct5f")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

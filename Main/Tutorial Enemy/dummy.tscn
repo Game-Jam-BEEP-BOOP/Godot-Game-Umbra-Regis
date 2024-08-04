@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2fv1g34m4lrx"]
+
+[ext_resource type="Script" path="res://Main/Tutorial Enemy/dummy.gd" id="1_jf2i8"]
+[ext_resource type="Texture2D" uid="uid://dn5cbbqj8chu4" path="res://Art/Animation/Human Player/Shadow Human Idle TEMP 1.png" id="2_y0qir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc22n"]
+size = Vector2(36, 44)
+
+[node name="Dummy" type="Area2D"]
+collision_layer = 18
+collision_mask = 2047
+script = ExtResource("1_jf2i8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_bc22n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("2_y0qir")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

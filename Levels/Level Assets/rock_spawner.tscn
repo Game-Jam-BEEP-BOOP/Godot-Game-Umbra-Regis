@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm8wtyhjvsvu1"]
+
+[ext_resource type="Script" path="res://Levels/LevelScripts/RockSpawner.gd" id="1_n4oo2"]
+[ext_resource type="Script" path="res://Levels/LevelScripts/RockTimer.gd" id="2_im5xm"]
+[ext_resource type="Script" path="res://Levels/LevelScripts/DespawnTimer.gd" id="3_0o38r"]
+
+[node name="RockSpawner" type="Node2D"]
+position = Vector2(80, -738)
+script = ExtResource("1_n4oo2")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+script = ExtResource("2_im5xm")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+script = ExtResource("3_0o38r")
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

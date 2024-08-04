@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwp617781mf5"]
+
+[ext_resource type="Texture2D" uid="uid://bqkrkpep6trxg" path="res://Art/Level Assets/Flying_Light_Arrow_Enemy_Temp.png" id="1_wn5bu"]
+[ext_resource type="Script" path="res://Levels/Level Assets/light_enemy_archer.gd" id="1_xcadh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4y7e"]
+radius = 32.3883
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4yem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wn5bu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g72pu"]
+radius = 921.122
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4narh"]
+radius = 42.0595
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4ffk"]
+radius = 688.007
+
+[node name="LightEnemyArcher" type="CharacterBody2D"]
+script = ExtResource("1_xcadh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p4y7e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, 8)
+sprite_frames = SubResource("SpriteFrames_w4yem")
+
+[node name="PlayerToward" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerToward"]
+shape = SubResource("CircleShape2D_g72pu")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 1152
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_4narh")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.2
+autostart = true
+
+[node name="LightAttack" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.4
+autostart = true
+
+[node name="PlayerAway" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAway"]
+shape = SubResource("CircleShape2D_a4ffk")
+
+[connection signal="body_exited" from="PlayerToward" to="." method="_on_player_toward_body_exited"]
+[connection signal="body_shape_entered" from="PlayerToward" to="." method="_on_player_detection_area_body_shape_entered"]
+[connection signal="area_shape_exited" from="Hitbox" to="." method="_on_hitbox_area_shape_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="LightAttack" to="." method="_on_light_attack_timeout"]
+[connection signal="area_shape_entered" from="PlayerAway" to="." method="_on_player_away_area_shape_entered"]
+[connection signal="body_entered" from="PlayerAway" to="." method="_on_player_away_body_entered"]
+[connection signal="body_exited" from="PlayerAway" to="." method="_on_player_away_body_exited"]

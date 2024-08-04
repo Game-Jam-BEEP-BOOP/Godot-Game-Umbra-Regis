@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvh3ofkf4sht"]
+
+[ext_resource type="PackedScene" uid="uid://bgin5qby256rd" path="res://Levels/Level_Master.tscn" id="1_elrq0"]
+[ext_resource type="PackedScene" uid="uid://duk4iqgeaunba" path="res://Levels/Level Assets/ShadowJump.tscn" id="2_8tijc"]
+[ext_resource type="PackedScene" uid="uid://gc3ti8khj7vs" path="res://Levels/Level Assets/Spikes.tscn" id="3_vjv25"]
+[ext_resource type="PackedScene" uid="uid://iuy4qwn81vr7" path="res://Levels/Level Assets/rock.tscn" id="4_0bn8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f33ee"]
+size = Vector2(522, 76)
+
+[node name="Level1" instance=ExtResource("1_elrq0")]
+
+[node name="SceneChanger" parent="." index="0"]
+level = "level_2"
+
+[node name="MainCharacter" parent="." index="1"]
+position = Vector2(245, -87)
+
+[node name="ShadowJump" parent="." index="2" instance=ExtResource("2_8tijc")]
+position = Vector2(91, 133)
+jump_power = 1000
+
+[node name="Spikes" parent="." index="4" instance=ExtResource("3_vjv25")]
+position = Vector2(262, 133)
+
+[node name="Node2D" type="StaticBody2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D" index="0"]
+position = Vector2(251, 28)
+shape = SubResource("RectangleShape2D_f33ee")
+
+[node name="Rock" parent="." index="6" instance=ExtResource("4_0bn8t")]
+position = Vector2(279, -606)
+collision_layer = 2
+collision_mask = 17

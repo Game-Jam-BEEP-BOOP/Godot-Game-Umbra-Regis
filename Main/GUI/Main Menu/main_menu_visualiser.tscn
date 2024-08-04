@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg6emupc26km1"]
+
+[ext_resource type="Texture2D" uid="uid://m4fr5xubhpmq" path="res://Art/Animation/misc/explosion1.png" id="2_p5djp"]
+[ext_resource type="Texture2D" uid="uid://dyuqfwynr4fuy" path="res://Art/Animation/misc/explosion2.png" id="3_oxqb2"]
+[ext_resource type="Texture2D" uid="uid://dh3sxmbfkywmy" path="res://Art/Animation/misc/explosion3.png" id="4_icdxk"]
+[ext_resource type="Texture2D" uid="uid://dw4nou47hyygs" path="res://Art/Animation/misc/explosion4.png" id="5_aup4x"]
+[ext_resource type="Texture2D" uid="uid://1ney4d4i1w77" path="res://Art/Animation/misc/Bouncers.png" id="5_bkx7s"]
+[ext_resource type="Texture2D" uid="uid://blam8p827iikn" path="res://Art/Items/blank.png" id="7_hwvum"]
+
+[sub_resource type="GDScript" id="GDScript_tp4q4"]
+script/source = "extends CharacterBody2D
+@onready var main_menu_visualiser: CharacterBody2D = $\".\"
+@onready var animated_sprite_2d: AnimatedSprite2D = $\"animated sprite 2D\"
+
+signal boom
+
+var start_pos: Vector2 = Vector2(721, 505)
+var started: bool = false
+var left: bool
+var mouse: bool = false
+var pause: bool = false
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta) -> void:
+	initialise()
+	if started and not pause:
+		bounce_time()
+		move_and_slide()
+		click()
+	
+func initialise():
+	if not started:
+		main_menu_visualiser.position = start_pos
+		started = true
+
+
+
+func bounce_time():
+	if (is_on_wall() || is_on_floor()) and left:
+		velocity.x = 700
+		left = false
+	elif is_on_wall() and not left:
+		velocity.x = -700
+		left = true
+	elif is_on_floor():
+		velocity.y = -700
+	velocity.y = velocity.y + 3
+	
+func click():
+	if Input.is_action_just_pressed(\"Attack\") and mouse:
+		var stored_velocity = velocity
+		boom.emit()
+		set_collision_layer_value(32, false)
+		set_collision_mask_value(32, false)
+		animated_sprite_2d.animation = \"boom\"
+		await get_tree().create_timer(0.1).timeout
+		animated_sprite_2d.animation = \"gone\"
+		main_menu_visualiser.position = start_pos
+		pause = true
+		await get_tree().create_timer(10).timeout
+		animated_sprite_2d.animation = \"default\"
+		set_collision_layer_value(32, true)
+		set_collision_mask_value(32, true)
+		pause = false
+		velocity = stored_velocity
+
+
+func _on_mouse_entered() -> void:
+	mouse = true
+
+
+func _on_mouse_exited() -> void:
+	mouse = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5x306"]
+radius = 55.0091
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jufj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p5djp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oxqb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_icdxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aup4x")
+}],
+"loop": true,
+"name": &"boom",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bkx7s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hwvum")
+}],
+"loop": true,
+"name": &"gone",
+"speed": 5.0
+}]
+
+[node name="Menu Visualiser" type="CharacterBody2D"]
+script = SubResource("GDScript_tp4q4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 17)
+shape = SubResource("CircleShape2D_5x306")
+
+[node name="animated sprite 2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8jufj")
+autoplay = "default"

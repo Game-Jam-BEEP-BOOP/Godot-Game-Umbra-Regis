@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8nnlt0w6w4c"]
+
+[ext_resource type="Script" path="res://Main/GUI/Main Menu/Main Menu.gd" id="1_q7orp"]
+[ext_resource type="Script" path="res://Main/GUI/Main Menu/Quit.gd" id="2_mpa0q"]
+[ext_resource type="PackedScene" uid="uid://dg6emupc26km1" path="res://main_menu_visualiser.tscn" id="3_kwb5o"]
+[ext_resource type="Script" path="res://Main/GUI/Main Menu/Load Menu.gd" id="3_o07qf"]
+[ext_resource type="Script" path="res://Main/GUI/Main Menu/Options Menu.gd" id="4_nk5j1"]
+
+[node name="MainMenu" type="Node"]
+
+[node name="Main Menu" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.364
+anchor_right = 0.343
+anchor_bottom = 0.641
+offset_left = 11.0
+offset_top = -142.872
+offset_right = -344.136
+offset_bottom = -282.368
+script = ExtResource("1_q7orp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Main Menu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 139.0
+offset_right = 376.0
+offset_bottom = 532.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 2.23
+
+[node name="Start" type="Button" parent="Main Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Load" type="Button" parent="Main Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="Options" type="Button" parent="Main Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="Main Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("2_mpa0q")
+
+[node name="Menu Visualiser" parent="Main Menu" instance=ExtResource("3_kwb5o")]
+position = Vector2(730, 574)
+
+[node name="Load Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_o07qf")
+
+[node name="Save Games" type="Control" parent="Load Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back" type="MarginContainer" parent="Load Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back Button" type="Button" parent="Load Menu/Back"]
+layout_mode = 2
+text = "Back"
+
+[node name="Options Menu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 93.0
+offset_right = 51.0
+offset_bottom = 133.0
+script = ExtResource("4_nk5j1")
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back" type="MarginContainer" parent="Options Menu"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -93.0
+offset_right = 29.0
+offset_bottom = -53.0
+
+[node name="Back Button" type="Button" parent="Options Menu/Back"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="load_menu" from="Main Menu" to="Load Menu" method="_on_main_menu_load_menu"]
+[connection signal="option_menu" from="Main Menu" to="Options Menu" method="_on_main_menu_option_menu"]
+[connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Start" to="Main Menu" method="_on_start_pressed"]
+[connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Load" to="Main Menu" method="_on_load_pressed"]
+[connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Options" to="Main Menu" method="_on_options_pressed"]
+[connection signal="back" from="Load Menu" to="Main Menu" method="_on_load_menu_back"]
+[connection signal="pressed" from="Load Menu/Back/Back Button" to="Load Menu" method="_on_back_button_pressed"]
+[connection signal="back" from="Options Menu" to="Main Menu" method="_on_options_menu_back"]
+[connection signal="pressed" from="Options Menu/Back/Back Button" to="Options Menu" method="_on_back_button_pressed"]

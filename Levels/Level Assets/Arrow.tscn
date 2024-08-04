@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkqsft67n632e"]
+
+[ext_resource type="Script" path="res://Levels/Level Assets/arrow_script.gd" id="1_s0hqs"]
+[ext_resource type="Texture2D" uid="uid://bffvso1p80k4l" path="res://Art/Level Assets/Arrow.png" id="2_4ebwl"]
+[ext_resource type="Texture2D" uid="uid://d3xrcakb7nf3l" path="res://Art/Level Assets/Spear_temp.png" id="3_bkwji"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2are8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4ebwl")
+}],
+"loop": true,
+"name": &"Arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bkwji")
+}],
+"loop": true,
+"name": &"Spear",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ummy3"]
+radius = 28.8617
+
+[node name="Arrow" type="Area2D" groups=["Projectiles"]]
+collision_layer = 1024
+collision_mask = 1094
+script = ExtResource("1_s0hqs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2are8")
+animation = &"Spear"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(120, 10)
+shape = SubResource("CircleShape2D_ummy3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5, 10)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

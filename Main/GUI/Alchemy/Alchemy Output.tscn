@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqholclx84sw8"]
+
+[ext_resource type="Script" path="res://Main/GUI/Alchemy/Alchemy Output.gd" id="1_8ptep"]
+[ext_resource type="Texture2D" uid="uid://blam8p827iikn" path="res://Art/Items/blank.png" id="2_sq2qy"]
+[ext_resource type="Texture2D" uid="uid://ccq4srdispcas" path="res://Art/Items/Alchemy Items/phantom_steel.png" id="3_36fye"]
+[ext_resource type="Texture2D" uid="uid://bnhxqi285jjmb" path="res://Art/Items/Alchemy Items/everlasting darkness.png" id="4_71g74"]
+[ext_resource type="Texture2D" uid="uid://b3xafm1322gdm" path="res://Art/Items/Alchemy Items/good health (2).png" id="5_66ldc"]
+[ext_resource type="Texture2D" uid="uid://bh1uolk488d8r" path="res://Art/Items/Alchemy Items/become human.png" id="6_hk3k8"]
+[ext_resource type="Texture2D" uid="uid://doao6w28lrg52" path="res://Art/Items/Alchemy Items/steel.png" id="7_r7cht"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bj8gh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sq2qy")
+}],
+"loop": true,
+"name": &"no output",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_36fye")
+}],
+"loop": true,
+"name": &"phantom_steel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_71g74")
+}],
+"loop": true,
+"name": &"potion_of_everlasting_darkness",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_66ldc")
+}],
+"loop": true,
+"name": &"potion_of_good_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_hk3k8")
+}],
+"loop": true,
+"name": &"potion_of_humanity",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_r7cht")
+}],
+"loop": true,
+"name": &"steel",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnvd2"]
+size = Vector2(235, 248)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_8ptep")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bj8gh")
+animation = &"steel"
+autoplay = "no output"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 9)
+shape = SubResource("RectangleShape2D_bnvd2")
+one_way_collision_margin = 0.0

@@ -1,0 +1,310 @@
+[gd_scene load_steps=40 format=3 uid="uid://ci4hd53ol7jfm"]
+
+[ext_resource type="Script" path="res://Levels/Level Assets/HumanEnemySword.gd" id="1_hmxv8"]
+[ext_resource type="Texture2D" uid="uid://b7enddwt214ox" path="res://Art/Enemies/Sword/Attack 1.png" id="2_rjb54"]
+[ext_resource type="Script" path="res://Levels/Level Assets/Enemy_Sword.gd" id="3_1xy4s"]
+[ext_resource type="Script" path="res://Levels/LevelScripts/PlayerDetection.gd" id="3_iqf6y"]
+[ext_resource type="Texture2D" uid="uid://5sbbkyyojhub" path="res://Art/Level Assets/Enemy_Sword_Temp.png" id="3_kyca5"]
+[ext_resource type="Texture2D" uid="uid://dgwi7dourm7i1" path="res://Art/Enemies/Sword/Dead.png" id="3_pu8q2"]
+[ext_resource type="Texture2D" uid="uid://bcjjkkb256x8h" path="res://Art/Enemies/Sword/Idle.png" id="4_d1cet"]
+[ext_resource type="Texture2D" uid="uid://cio4boou8rv3d" path="res://Art/Enemies/Sword/Walk.png" id="5_0d8qo"]
+[ext_resource type="Script" path="res://Levels/Level Assets/RayCastLeftSword.gd" id="6_35l6f"]
+[ext_resource type="Script" path="res://Levels/Level Assets/RayCastRightSword.gd" id="7_55hgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f5jp"]
+size = Vector2(96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osgke"]
+atlas = ExtResource("2_rjb54")
+region = Rect2(0, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iexmk"]
+atlas = ExtResource("2_rjb54")
+region = Rect2(86, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvqvo"]
+atlas = ExtResource("2_rjb54")
+region = Rect2(172, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5l6p"]
+atlas = ExtResource("2_rjb54")
+region = Rect2(258, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvwuk"]
+atlas = ExtResource("2_rjb54")
+region = Rect2(344, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsptt"]
+atlas = ExtResource("3_pu8q2")
+region = Rect2(0, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgdon"]
+atlas = ExtResource("3_pu8q2")
+region = Rect2(80, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ale8"]
+atlas = ExtResource("3_pu8q2")
+region = Rect2(160, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q3lu"]
+atlas = ExtResource("3_pu8q2")
+region = Rect2(240, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cp7u"]
+atlas = ExtResource("3_pu8q2")
+region = Rect2(320, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46vpe"]
+atlas = ExtResource("3_pu8q2")
+region = Rect2(400, 0, 80, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aandd"]
+atlas = ExtResource("4_d1cet")
+region = Rect2(0, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppb17"]
+atlas = ExtResource("4_d1cet")
+region = Rect2(72, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_536bs"]
+atlas = ExtResource("4_d1cet")
+region = Rect2(144, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08eg1"]
+atlas = ExtResource("4_d1cet")
+region = Rect2(216, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w87gm"]
+atlas = ExtResource("5_0d8qo")
+region = Rect2(0, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ljhm"]
+atlas = ExtResource("5_0d8qo")
+region = Rect2(72, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh1pd"]
+atlas = ExtResource("5_0d8qo")
+region = Rect2(144, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2tm3"]
+atlas = ExtResource("5_0d8qo")
+region = Rect2(216, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pvx5"]
+atlas = ExtResource("5_0d8qo")
+region = Rect2(288, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4u23"]
+atlas = ExtResource("5_0d8qo")
+region = Rect2(360, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1mdl"]
+atlas = ExtResource("5_0d8qo")
+region = Rect2(432, 0, 72, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mlhr"]
+atlas = ExtResource("5_0d8qo")
+region = Rect2(504, 0, 72, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkb3b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osgke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iexmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvqvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5l6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvwuk")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsptt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgdon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ale8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q3lu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cp7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46vpe")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aandd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppb17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_536bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08eg1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w87gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ljhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh1pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2tm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pvx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4u23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1mdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mlhr")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lreyt"]
+size = Vector2(1048, 221)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1jnv"]
+size = Vector2(104, 131)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_woaoi"]
+radius = 11.0
+height = 170.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xguoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Invisible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_kyca5")
+}],
+"loop": true,
+"name": &"Visible",
+"speed": 5.0
+}]
+
+[node name="HumanEnemySword" type="CharacterBody2D" groups=["Enemys"]]
+collision_mask = 4
+script = ExtResource("1_hmxv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -16)
+shape = SubResource("RectangleShape2D_6f5jp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vkb3b")
+animation = &"dead"
+autoplay = "idle"
+
+[node name="PlayerDetection" type="Area2D" parent="." groups=["Enemys"]]
+script = ExtResource("3_iqf6y")
+
+[node name="PlayerDetection" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(4, -61.5)
+shape = SubResource("RectangleShape2D_lreyt")
+
+[node name="Attack Cooldown" type="Timer" parent="PlayerDetection"]
+process_callback = 0
+wait_time = 2.0
+autostart = true
+
+[node name="hitbox" type="Area2D" parent="." groups=["Enemys"]]
+collision_layer = 64
+collision_mask = 130
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-8, -17.5)
+shape = SubResource("RectangleShape2D_d1jnv")
+
+[node name="Sword" type="Area2D" parent="." groups=["Swords"]]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("3_1xy4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+position = Vector2(0, -83)
+shape = SubResource("CapsuleShape2D_woaoi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sword"]
+position = Vector2(3, -72)
+scale = Vector2(0.758621, 0.651436)
+sprite_frames = SubResource("SpriteFrames_xguoc")
+animation = &"Invisible"
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-63, 35)
+collision_mask = 4
+collide_with_areas = true
+script = ExtResource("6_35l6f")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(47, 33)
+collision_mask = 4294901764
+collide_with_areas = true
+script = ExtResource("7_55hgu")
+
+[node name="LedgeMoveAway" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="JumpTimer" type="Timer" parent="."]
+
+[connection signal="attack_end" from="." to="." method="_on_attack_end"]
+[connection signal="freezeSword" from="." to="Sword" method="_on_human_enemy_sword_freeze_sword"]
+[connection signal="attack_time_left" from="PlayerDetection" to="Sword" method="_on_player_detection_attack_time_left"]
+[connection signal="attack_time_right" from="PlayerDetection" to="Sword" method="_on_player_detection_attack_time_right"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="PlayerDetection/Attack Cooldown" to="PlayerDetection" method="_on_attack_cooldown_timeout"]
+[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="area_shape_entered" from="hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="area_shape_exited" from="hitbox" to="." method="_on_hitbox_area_shape_exited"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="attack_end" from="Sword" to="." method="_on_sword_attack_end"]
+[connection signal="RayCastNotColliding" from="RayCastLeft" to="." method="_on_ray_cast_left_ray_cast_not_colliding"]
+[connection signal="rightRayCastNotColliding" from="RayCastRight" to="." method="_on_ray_cast_right_right_ray_cast_not_colliding"]
+[connection signal="timeout" from="LedgeMoveAway" to="." method="_on_ledge_move_away_timeout"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

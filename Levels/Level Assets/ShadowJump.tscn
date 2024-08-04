@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://duk4iqgeaunba"]
+
+[ext_resource type="Script" path="res://Levels/Level Assets/ShadowJump.gd" id="1_6u2xd"]
+[ext_resource type="Texture2D" uid="uid://bkdjvx81uikxo" path="res://Art/Level Assets/ShadowJump_Temp.png" id="2_4ruke"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h81ae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4ruke")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqvev"]
+size = Vector2(55.5, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g2ee"]
+size = Vector2(56, 27)
+
+[node name="ShadowJump" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_6u2xd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(34, 21)
+sprite_frames = SubResource("SpriteFrames_h81ae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.25, -2)
+shape = SubResource("RectangleShape2D_rqvev")
+
+[node name="InvisiblePlatform" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisiblePlatform"]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_6g2ee")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

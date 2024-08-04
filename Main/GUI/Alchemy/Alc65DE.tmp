@@ -1,0 +1,183 @@
+[gd_scene load_steps=11 format=3 uid="uid://lkepeyvha77y"]
+
+[ext_resource type="Texture2D" uid="uid://b1lhes3xkhkhw" path="res://Art/Alchemy/alchemy bench.jpg" id="1_5w6l1"]
+[ext_resource type="Script" path="res://Main/GUI/Alchemy/Alchemy Screen.gd" id="1_qakwu"]
+[ext_resource type="PackedScene" uid="uid://bqholclx84sw8" path="res://Main/GUI/Alchemy/Alchemy Output.tscn" id="3_odqct"]
+[ext_resource type="PackedScene" uid="uid://kdyxij2n0xwy" path="res://Main/GUI/Alchemy/ingredient_1.tscn" id="4_0mleq"]
+[ext_resource type="Script" path="res://Main/GUI/Alchemy/Exit.gd" id="4_wbvm3"]
+[ext_resource type="PackedScene" uid="uid://dk4ib0fu1wwef" path="res://Main/GUI/Alchemy/ingredient_2.tscn" id="5_khfvj"]
+[ext_resource type="Script" path="res://Main/GUI/Alchemy/ingredient_2.gd" id="6_66edm"]
+[ext_resource type="PackedScene" uid="uid://uq1e0pfsruu" path="res://Main/GUI/Alchemy/ingredient_3.tscn" id="7_yorrt"]
+[ext_resource type="Script" path="res://Main/GUI/Alchemy/ingredient_3.gd" id="8_2vmop"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b67jy"]
+bg_color = Color(0.37, 0.37, 0.37, 0.819608)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[node name="Alchemy Screen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_qakwu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 325)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 487.0
+texture = ExtResource("1_5w6l1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Output" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 133.0
+offset_right = 680.0
+offset_bottom = 367.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b67jy")
+
+[node name="Ingredient 1" parent="." instance=ExtResource("4_0mleq")]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 379.0
+offset_right = 458.0
+offset_bottom = 441.0
+
+[node name="Ingredient 2" parent="." instance=ExtResource("5_khfvj")]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 380.0
+offset_right = 602.0
+offset_bottom = 442.0
+script = ExtResource("6_66edm")
+
+[node name="Ingredient 3" parent="." instance=ExtResource("7_yorrt")]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 378.0
+offset_right = 769.0
+offset_bottom = 440.0
+script = ExtResource("8_2vmop")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 465.0
+offset_right = 1151.0
+offset_bottom = 645.0
+grow_vertical = 0
+
+[node name="Wood" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Wood"
+
+[node name="Rock" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Rock"
+
+[node name="Metal Scraps" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Metal Scraps"
+
+[node name="Steel" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Steel"
+
+[node name="Ajuga" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Ajuga"
+
+[node name="Phantom Steel" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Phantom Steel"
+
+[node name="Brugmansia" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Brugmansia"
+
+[node name="Hyssop" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Hyssop"
+
+[node name="Queen of the Night" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Queen of the Night"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_right = 151.0
+offset_bottom = 69.0
+text = "Exit Alchemy"
+script = ExtResource("4_wbvm3")
+
+[node name="Alchemy Output" parent="." instance=ExtResource("3_odqct")]
+position = Vector2(565, 240)
+collision_layer = 544
+collision_mask = 544
+
+[connection signal="Potion_of_Everlasting_Darkness" from="." to="Alchemy Output" method="_on_alchemy_screen_potion_of_everlasting_darkness"]
+[connection signal="Potion_of_Good_Health" from="." to="Alchemy Output" method="_on_alchemy_screen_potion_of_good_health"]
+[connection signal="Potion_of_Humanity" from="." to="Alchemy Output" method="_on_alchemy_screen_potion_of_humanity"]
+[connection signal="count1" from="." to="Ingredient 1" method="_on_alchemy_screen_count_1"]
+[connection signal="count2" from="." to="Ingredient 2" method="_on_alchemy_screen_count_2"]
+[connection signal="count3" from="." to="Ingredient 3" method="_on_alchemy_screen_count_3"]
+[connection signal="make_phantom_steel" from="." to="Alchemy Output" method="_on_alchemy_screen_make_phantom_steel"]
+[connection signal="make_steel" from="." to="Alchemy Output" method="_on_alchemy_screen_make_steel"]
+[connection signal="pressed" from="GridContainer/Wood" to="." method="_on_wood_pressed"]
+[connection signal="pressed" from="GridContainer/Wood" to="Ingredient 1" method="_on_wood_pressed"]
+[connection signal="pressed" from="GridContainer/Wood" to="Ingredient 2" method="_on_wood_pressed"]
+[connection signal="pressed" from="GridContainer/Wood" to="Ingredient 3" method="_on_wood_pressed"]
+[connection signal="pressed" from="GridContainer/Rock" to="." method="_on_rock_pressed"]
+[connection signal="pressed" from="GridContainer/Rock" to="Ingredient 1" method="_on_rock_pressed"]
+[connection signal="pressed" from="GridContainer/Rock" to="Ingredient 2" method="_on_rock_pressed"]
+[connection signal="pressed" from="GridContainer/Rock" to="Ingredient 3" method="_on_rock_pressed"]
+[connection signal="pressed" from="GridContainer/Metal Scraps" to="." method="_on_metal_scraps_pressed"]
+[connection signal="pressed" from="GridContainer/Metal Scraps" to="Ingredient 1" method="_on_metal_scraps_pressed"]
+[connection signal="pressed" from="GridContainer/Metal Scraps" to="Ingredient 2" method="_on_metal_scraps_pressed"]
+[connection signal="pressed" from="GridContainer/Metal Scraps" to="Ingredient 3" method="_on_metal_scraps_pressed"]
+[connection signal="pressed" from="GridContainer/Steel" to="." method="_on_steel_pressed"]
+[connection signal="pressed" from="GridContainer/Steel" to="Ingredient 1" method="_on_steel_pressed"]
+[connection signal="pressed" from="GridContainer/Steel" to="Ingredient 2" method="_on_steel_pressed"]
+[connection signal="pressed" from="GridContainer/Steel" to="Ingredient 3" method="_on_steel_pressed"]
+[connection signal="pressed" from="GridContainer/Ajuga" to="." method="_on_ajuga_pressed"]
+[connection signal="pressed" from="GridContainer/Ajuga" to="Ingredient 1" method="_on_ajuga_pressed"]
+[connection signal="pressed" from="GridContainer/Ajuga" to="Ingredient 2" method="_on_ajuga_pressed"]
+[connection signal="pressed" from="GridContainer/Ajuga" to="Ingredient 3" method="_on_ajuga_pressed"]
+[connection signal="pressed" from="GridContainer/Phantom Steel" to="." method="_on_phantom_steel_pressed"]
+[connection signal="pressed" from="GridContainer/Phantom Steel" to="Ingredient 1" method="_on_phantom_steel_pressed"]
+[connection signal="pressed" from="GridContainer/Phantom Steel" to="Ingredient 2" method="_on_phantom_steel_pressed"]
+[connection signal="pressed" from="GridContainer/Phantom Steel" to="Ingredient 3" method="_on_phantom_steel_pressed"]
+[connection signal="pressed" from="GridContainer/Brugmansia" to="." method="_on_brugmansia_pressed"]
+[connection signal="pressed" from="GridContainer/Brugmansia" to="Ingredient 1" method="_on_brugmansia_pressed"]
+[connection signal="pressed" from="GridContainer/Brugmansia" to="Ingredient 2" method="_on_brugmansia_pressed"]
+[connection signal="pressed" from="GridContainer/Brugmansia" to="Ingredient 3" method="_on_brugmansia_pressed"]
+[connection signal="pressed" from="GridContainer/Hyssop" to="." method="_on_hyssop_pressed"]
+[connection signal="pressed" from="GridContainer/Hyssop" to="Ingredient 1" method="_on_hyssop_pressed"]
+[connection signal="pressed" from="GridContainer/Hyssop" to="Ingredient 2" method="_on_hyssop_pressed"]
+[connection signal="pressed" from="GridContainer/Hyssop" to="Ingredient 3" method="_on_hyssop_pressed"]
+[connection signal="pressed" from="GridContainer/Queen of the Night" to="." method="_on_queen_of_the_night_pressed"]
+[connection signal="pressed" from="GridContainer/Queen of the Night" to="Ingredient 1" method="_on_queen_of_the_night_pressed"]
+[connection signal="pressed" from="GridContainer/Queen of the Night" to="Ingredient 2" method="_on_queen_of_the_night_pressed"]
+[connection signal="pressed" from="GridContainer/Queen of the Night" to="Ingredient 3" method="_on_queen_of_the_night_pressed"]
+[connection signal="pressed" from="Exit" to="Exit" method="_on_pressed"]
+[connection signal="mouse_entered" from="Alchemy Output" to="Alchemy Output" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Alchemy Output" to="Alchemy Output" method="_on_mouse_exited"]
+[connection signal="reset" from="Alchemy Output" to="Ingredient 1" method="_on_alchemy_output_reset"]
+[connection signal="reset" from="Alchemy Output" to="Ingredient 2" method="_on_alchemy_output_reset"]
+[connection signal="reset" from="Alchemy Output" to="Ingredient 3" method="_on_alchemy_output_reset"]

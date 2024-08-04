@@ -1,0 +1,123 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3om0flnjs7pt"]
+
+[ext_resource type="Script" path="res://Items/Resources/Objects/resources.gd" id="1_i8bqg"]
+[ext_resource type="Texture2D" uid="uid://blam8p827iikn" path="res://Art/Items/blank.png" id="2_o8x6f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlqex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"ajuga",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"broken_rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"broken_steel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"broken_wood",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"brugmansia",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"hyssop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"metal_scraps",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o8x6f")
+}],
+"loop": true,
+"name": &"pickup",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"queen_of_the_night",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"steel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"wood",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1ek5"]
+radius = 76.0
+height = 204.0
+
+[node name="Resources" type="StaticBody2D"]
+position = Vector2(1850, 552)
+collision_layer = 0
+collision_mask = 32
+input_pickable = true
+script = ExtResource("1_i8bqg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-624, -304)
+sprite_frames = SubResource("SpriteFrames_tlqex")
+animation = &"queen_of_the_night"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-624, -308)
+shape = SubResource("CapsuleShape2D_x1ek5")

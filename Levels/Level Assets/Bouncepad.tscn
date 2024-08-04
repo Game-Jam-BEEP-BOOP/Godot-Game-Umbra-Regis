@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://gltvvnic1x58"]
+
+[ext_resource type="Script" path="res://Levels/Level Assets/ShadowJump.gd" id="1_x2j35"]
+[ext_resource type="Texture2D" uid="uid://bkdjvx81uikxo" path="res://Art/Level Assets/ShadowJump_Temp.png" id="2_o4v2p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4fwt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o4v2p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gc4w6"]
+size = Vector2(54, 30)
+
+[node name="ShadowJump" type="Area2D"]
+script = ExtResource("1_x2j35")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, 23)
+sprite_frames = SubResource("SpriteFrames_p4fwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_gc4w6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

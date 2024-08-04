@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw3u6vt66rqay"]
+
+[ext_resource type="PackedScene" uid="uid://bvh3ofkf4sht" path="res://Levels/test.tscn" id="2_ocien"]
+[ext_resource type="PackedScene" uid="uid://bpjh7eme5hhlh" path="res://Levels/test2.tscn" id="3_lxwfj"]
+
+[node name="LevelSwitcher" type="Node2D"]
+
+[node name="Level1" parent="." instance=ExtResource("2_ocien")]
+
+[node name="Level2" parent="." instance=ExtResource("3_lxwfj")]

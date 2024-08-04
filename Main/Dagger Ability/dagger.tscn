@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmj81hcnkbg75"]
+
+[ext_resource type="Script" path="res://Main/Dagger Ability/Dagger.gd" id="1_sbnna"]
+[ext_resource type="Texture2D" uid="uid://cangfmgihuagy" path="res://Art/Animation/Dagger/Dagger TEMP 1.png" id="2_5v7ec"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl8qi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5v7ec")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt37j"]
+
+[node name="Dagger" type="Area2D" groups=["Player Weapon", "Projectiles"]]
+scale = Vector2(0.18, 0.18)
+collision_layer = 128
+collision_mask = 19
+script = ExtResource("1_sbnna")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gl8qi")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xt37j")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

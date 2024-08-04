@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyic2rgk8tnim"]
+
+[ext_resource type="Script" path="res://Ed/ShadowCharacter.gd" id="1_k752p"]
+[ext_resource type="Texture2D" uid="uid://2uqxsmg845g0" path="res://Art/Shadow/Shadow temp big.png" id="2_70hhb"]
+[ext_resource type="Texture2D" uid="uid://c1y6b61vy3022" path="res://Art/Animation/Player/Walk/Shadow Walking TEMP 1.png" id="3_0tgv1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q27x0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_70hhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0tgv1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmtnq"]
+radius = 40.0
+
+[node name="Body" type="Skeleton2D"]
+script = ExtResource("1_k752p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.450364, 0.413194)
+sprite_frames = SubResource("SpriteFrames_q27x0")
+frame_progress = 0.565156
+
+[node name="Shape1" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_gmtnq")

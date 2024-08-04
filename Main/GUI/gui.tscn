@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://c03phjbnhebxb"]
+
+[ext_resource type="Script" path="res://Main/GUI/gui.gd" id="1_cptm5"]
+[ext_resource type="Script" path="res://Main/GUI/Inventory/toggling inventory.gd" id="2_yaobu"]
+[ext_resource type="PackedScene" uid="uid://sj0m3jk8t1w4" path="res://Main/GUI/Inventory/inventory.tscn" id="3_ekiu1"]
+[ext_resource type="PackedScene" uid="uid://br77e57v564fv" path="res://Main/Loading/Loading_level_change.tscn" id="3_ypwrl"]
+[ext_resource type="Script" path="res://Main/GUI/Health Bar.gd" id="5_6y7dq"]
+[ext_resource type="Script" path="res://Main/GUI/Shadow_Bar.gd" id="5_f7jpa"]
+[ext_resource type="PackedScene" uid="uid://c2ud1ip2jsvgc" path="res://Main/GUI/Hotbar/Hotbar.tscn" id="8_06bn0"]
+[ext_resource type="PackedScene" uid="uid://bdrvu6onuqn5p" path="res://Main/GUI/Pause Menu/pause_menu.tscn" id="9_jhewp"]
+[ext_resource type="Script" path="res://Main/GUI/Pause Menu/pause menu visibilty.gd" id="10_flpof"]
+[ext_resource type="Script" path="res://Main/GUI/Death Screen.gd" id="11_51ksf"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cptm5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("2_yaobu")
+
+[node name="Loading Level Change" parent="CanvasLayer" instance=ExtResource("3_ypwrl")]
+process_mode = 3
+scale = Vector2(1.095, 1.065)
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("3_ekiu1")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -81.0
+offset_right = 147.5
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow Bar" type="ProgressBar" parent="CanvasLayer"]
+process_mode = 1
+modulate = Color(0.12549, 0, 0.160784, 1)
+offset_left = -88.0
+offset_top = 6.0
+offset_right = 367.0
+offset_bottom = 66.0
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(310, 150)
+value = 100.0
+show_percentage = false
+script = ExtResource("5_f7jpa")
+
+[node name="Health Bar" type="ProgressBar" parent="CanvasLayer"]
+process_mode = 1
+modulate = Color(0.685733, 3.10443e-06, 5.77569e-07, 1)
+offset_left = 37.0
+offset_top = 19.0
+offset_right = 488.0
+offset_bottom = 77.0
+scale = Vector2(0.6, 0.6)
+value = 100.0
+show_percentage = false
+script = ExtResource("5_6y7dq")
+
+[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("8_06bn0")]
+process_mode = 1
+offset_left = 125.0
+offset_top = 103.0
+offset_right = 125.0
+offset_bottom = 103.0
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("9_jhewp")]
+process_mode = 3
+script = ExtResource("10_flpof")
+
+[node name="Death Screen" type="TextureRect" parent="CanvasLayer"]
+offset_left = 367.0
+offset_top = 262.0
+offset_right = 788.0
+offset_bottom = 382.0
+script = ExtResource("11_51ksf")
+
+[connection signal="healthChangedGUI" from="." to="CanvasLayer/Health Bar" method="_on_gui_health_changed_gui"]
+[connection signal="out_of_shadow" from="." to="CanvasLayer/Health Bar" method="_on_gui_out_of_shadow"]
+[connection signal="shadowChangedGUI" from="." to="CanvasLayer/Shadow Bar" method="_on_gui_shadow_changed_gui"]
+[connection signal="bar_empty" from="CanvasLayer/Shadow Bar" to="." method="_on_shadow_bar_bar_empty"]
+[connection signal="ded" from="CanvasLayer/Health Bar" to="CanvasLayer/Death Screen" method="_on_health_bar_ded"]
+[connection signal="slot1_guh" from="CanvasLayer/Hotbar" to="." method="_on_hotbar_slot_1_guh"]
+[connection signal="slot2_guh" from="CanvasLayer/Hotbar" to="." method="_on_hotbar_slot_2_guh"]
+[connection signal="slot3_guh" from="CanvasLayer/Hotbar" to="." method="_on_hotbar_slot_3_guh"]

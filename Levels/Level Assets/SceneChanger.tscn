@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2si2dn3oou7b"]
+
+[ext_resource type="Script" path="res://Levels/Level Assets/SceneChanger.gd" id="1_xkdo8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ei2r1"]
+size = Vector2(82, 69)
+
+[node name="SceneChanger" type="Area2D"]
+script = ExtResource("1_xkdo8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_ei2r1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

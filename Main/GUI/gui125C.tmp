@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://c03phjbnhebxb"]
+
+[ext_resource type="Script" path="res://Main/GUI/gui.gd" id="1_cptm5"]
+[ext_resource type="Script" path="res://Main/GUI/toggling inventory.gd" id="2_bhvrj"]
+[ext_resource type="PackedScene" uid="uid://sj0m3jk8t1w4" path="res://Main/GUI/inventory.tscn" id="2_uxm7x"]
+[ext_resource type="Script" path="res://Main/GUI/inventory visibility.gd" id="4_jc1p3"]
+[ext_resource type="Script" path="res://Main/GUI/Health Bar.gd" id="5_6y7dq"]
+[ext_resource type="Script" path="res://Main/GUI/Shadow_Bar.gd" id="5_f7jpa"]
+[ext_resource type="Texture2D" uid="uid://4vt4eokbfywy" path="res://Art/GUI Kinda Thing/black.png" id="6_gub2c"]
+[ext_resource type="Texture2D" uid="uid://dgemh2k0a4uui" path="res://Art/GUI Kinda Thing/filling.png" id="7_jwche"]
+[ext_resource type="PackedScene" uid="uid://bdrvu6onuqn5p" path="res://Main/GUI/pause_menu.tscn" id="9_2ikeg"]
+[ext_resource type="Script" path="res://Main/GUI/pause menu visibilty.gd" id="10_bsnpy"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cptm5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("2_bhvrj")
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("2_uxm7x")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -81.0
+offset_right = 147.5
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_jc1p3")
+
+[node name="Shadow Bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = -88.0
+offset_top = 6.0
+offset_right = 367.0
+offset_bottom = 66.0
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(310, 150)
+value = 100.0
+script = ExtResource("5_f7jpa")
+
+[node name="Health Bar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = -99.0
+offset_top = -60.0
+offset_right = 1413.0
+offset_bottom = 752.0
+scale = Vector2(0.6, 0.6)
+value = 100.0
+texture_under = ExtResource("6_gub2c")
+texture_progress = ExtResource("7_jwche")
+texture_progress_offset = Vector2(-22, -9)
+script = ExtResource("5_6y7dq")
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("9_2ikeg")]
+process_mode = 3
+script = ExtResource("10_bsnpy")
+
+[connection signal="healthChangedGUI" from="." to="CanvasLayer/Health Bar" method="_on_gui_health_changed_gui"]
+[connection signal="shadowChangedGUI" from="." to="CanvasLayer/Shadow Bar" method="_on_gui_shadow_changed_gui"]
+[connection signal="shadowlimit" from="CanvasLayer/Shadow Bar" to="." method="_on_shadow_bar_shadowlimit"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://owpp0p8hh6k2"]
+
+[ext_resource type="Texture2D" uid="uid://blam8p827iikn" path="res://Art/Items/blank.png" id="1_5qf2r"]
+[ext_resource type="Script" path="res://Main/GUI/Hotbar/slot1.gd" id="1_uafde"]
+[ext_resource type="Texture2D" uid="uid://dij4y63prph5e" path="res://Art/Alchemy/potions/Alchemy Output.png" id="3_ei2ba"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjcvv"]
+bg_color = Color(0.419608, 0.419608, 0.419608, 1)
+border_color = Color(0.823529, 0.823529, 0.823529, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdo1n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnyo3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5qf2r")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ei2ba")
+}],
+"loop": true,
+"name": &"potion of everlasting darkness",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ei2ba")
+}],
+"loop": true,
+"name": &"potion of great health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ei2ba")
+}],
+"loop": true,
+"name": &"potion of humanity",
+"speed": 5.0
+}]
+
+[node name="slot1" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kjcvv")
+script = ExtResource("1_uafde")
+
+[node name="Item" type="Area2D" parent="."]
+scale = Vector2(0.3, 0.3)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+shape = SubResource("CircleShape2D_wdo1n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Item"]
+position = Vector2(60, 60)
+sprite_frames = SubResource("SpriteFrames_rnyo3")
+animation = &"potion of everlasting darkness"
+autoplay = "empty"

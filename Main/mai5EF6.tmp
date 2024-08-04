@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://bncp2emn03rr5"]
+
+[ext_resource type="Texture2D" uid="uid://yket1lgw6nu4" path="res://Art/Animation/Player/Idle/Shadow Idle TEMP 1.png" id="1_6k1cv"]
+[ext_resource type="Script" path="res://Main/main_character.gd" id="1_tpodu"]
+[ext_resource type="Texture2D" uid="uid://dbs1ryjwvpr8u" path="res://Art/Animation/Player/Idle/Shadow Idle TEMP 2.png" id="2_g7345"]
+[ext_resource type="Texture2D" uid="uid://d25hb5xulcdi7" path="res://Art/Animation/Player/Idle/Shadow Idle TEMP 3.png" id="3_72qe4"]
+[ext_resource type="Texture2D" uid="uid://cktnx8nb88npw" path="res://Art/Animation/Player/Idle/Shadow Idle TEMP 4.png" id="4_v50xq"]
+[ext_resource type="Texture2D" uid="uid://dl2bqb43w8b6q" path="res://Art/Animation/Player/Idle/Shadow Idle TEMP 5.png" id="5_n1wlr"]
+[ext_resource type="Texture2D" uid="uid://dshkkehagtdme" path="res://Art/Animation/Player/Idle/Shadow Idle TEMP 6.png" id="6_8lssi"]
+[ext_resource type="Texture2D" uid="uid://cvxuq6dn0gqky" path="res://Art/Animation/Player/Idle/Shadow Idle TEMP 7.png" id="7_gsht1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkq7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6k1cv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g7345")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_72qe4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v50xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n1wlr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8lssi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gsht1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8lssi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n1wlr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v50xq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kb7eq"]
+radius = 67.2681
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_tpodu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(93, 495)
+sprite_frames = SubResource("SpriteFrames_qkq7d")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(91, 502)
+shape = SubResource("CircleShape2D_kb7eq")

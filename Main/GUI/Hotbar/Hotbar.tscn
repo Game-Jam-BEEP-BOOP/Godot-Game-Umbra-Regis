@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2ud1ip2jsvgc"]
+
+[ext_resource type="Script" path="res://Main/GUI/Hotbar/Hotbar.gd" id="1_8q27m"]
+[ext_resource type="PackedScene" uid="uid://owpp0p8hh6k2" path="res://Main/GUI/Hotbar/slot_1.tscn" id="1_s5u43"]
+[ext_resource type="PackedScene" uid="uid://cofqbfdoxw8qs" path="res://Main/GUI/Hotbar/slot_2.tscn" id="2_ff7i0"]
+[ext_resource type="PackedScene" uid="uid://docwhwjwioy1o" path="res://Main/GUI/Hotbar/slot_3.tscn" id="3_r8wbn"]
+[ext_resource type="Script" path="res://Main/GUI/Hotbar/selector.gd" id="5_c5jvd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pw0mm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.787759, 0.787759, 0.787759, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Hotbar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8q27m")
+
+[node name="slot1" parent="." instance=ExtResource("1_s5u43")]
+layout_mode = 0
+offset_left = -88.0
+offset_top = 15.0
+offset_right = -48.0
+offset_bottom = 55.0
+
+[node name="slot2" parent="." instance=ExtResource("2_ff7i0")]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 15.0
+offset_right = 2.0
+offset_bottom = 55.0
+
+[node name="slot3" parent="." instance=ExtResource("3_r8wbn")]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 53.0
+offset_bottom = 55.0
+
+[node name="selector" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -88.0
+offset_top = 15.0
+offset_right = -48.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pw0mm")
+script = ExtResource("5_c5jvd")
+
+[connection signal="set_slot1_item" from="slot1" to="." method="_on_slot_1_set_slot_1_item"]
+[connection signal="set_slot1_item" from="slot1" to="slot2" method="_on_slot_1_set_slot_1_item"]
+[connection signal="set_slot1_item" from="slot1" to="slot3" method="_on_slot_1_set_slot_1_item"]
+[connection signal="set_slot2_item" from="slot2" to="." method="_on_slot_2_set_slot_2_item"]
+[connection signal="set_slot2_item" from="slot2" to="slot1" method="_on_slot_2_set_slot_2_item"]
+[connection signal="set_slot2_item" from="slot2" to="slot3" method="_on_slot_2_set_slot_2_item"]
+[connection signal="set_slot3_item" from="slot3" to="." method="_on_slot_3_set_slot_3_item"]
+[connection signal="set_slot3_item" from="slot3" to="slot1" method="_on_slot_3_set_slot_3_item"]
+[connection signal="set_slot3_item" from="slot3" to="slot2" method="_on_slot_3_set_slot_3_item"]

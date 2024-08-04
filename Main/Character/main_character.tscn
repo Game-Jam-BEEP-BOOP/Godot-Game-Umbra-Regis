@@ -1,0 +1,416 @@
+[gd_scene load_steps=66 format=3 uid="uid://bncp2emn03rr5"]
+
+[ext_resource type="Script" path="res://Main/Character/main_character.gd" id="1_tpodu"]
+[ext_resource type="Script" path="res://Main/Character/Main Camera.gd" id="2_1drlv"]
+[ext_resource type="Texture2D" uid="uid://dclgoqdh66b1w" path="res://Art/Animation/Player/Dagger Throw/Dagger Throw 1.png" id="2_gsa5k"]
+[ext_resource type="Texture2D" uid="uid://dlait8yhy4dsi" path="res://Art/Animation/Player/Falling/Fall 1.png" id="4_jha7r"]
+[ext_resource type="Texture2D" uid="uid://qr1ev1lsduu7" path="res://Art/Animation/Player/Flying/Fly 1.png" id="5_tc200"]
+[ext_resource type="Texture2D" uid="uid://p57t5qp74c5a" path="res://Art/Animation/Player/Going Up/Going Up.png" id="6_bqhnx"]
+[ext_resource type="Texture2D" uid="uid://4kd2587cyyau" path="res://Art/Animation/Player/Flying/Fly 2.png" id="6_n1s2k"]
+[ext_resource type="Texture2D" uid="uid://c23adjpf7hwip" path="res://Art/Animation/Player/Gliding/Glide 1.png" id="7_5fv31"]
+[ext_resource type="Texture2D" uid="uid://bfcx0n4hkhp6n" path="res://Art/Animation/Player/Gliding/Glide 2.png" id="8_phmn0"]
+[ext_resource type="Texture2D" uid="uid://b5flewdtbo5ld" path="res://Art/Animation/Player/Idle/Idle 1.png" id="8_wuqk6"]
+[ext_resource type="Texture2D" uid="uid://b4yx0cjmcnj2a" path="res://Art/Animation/Player/Idle/Idle 2.png" id="9_aviw5"]
+[ext_resource type="Texture2D" uid="uid://ccpobn3h7d3hi" path="res://Art/Animation/Player/Gremlin Mode/Gremlin Mode 1.png" id="10_b56sn"]
+[ext_resource type="Texture2D" uid="uid://cbsgof8c3mn32" path="res://Art/Animation/Player/Idle/Idle 3.png" id="10_ew8ds"]
+[ext_resource type="Texture2D" uid="uid://b57fxa0es6m0j" path="res://Art/Animation/Player/Idle/Idle 4.png" id="11_552xb"]
+[ext_resource type="Script" path="res://Main/Character/Sword.gd" id="12_87hlf"]
+[ext_resource type="Texture2D" uid="uid://b5xbyr8j5ufi5" path="res://Art/Animation/Player/Idle/Idle 5.png" id="12_u382s"]
+[ext_resource type="Texture2D" uid="uid://bat5jwrmbg7l3" path="res://Art/Animation/Player/Attack/Blank.png" id="13_5h874"]
+[ext_resource type="Texture2D" uid="uid://c1m7w4jbjx2ht" path="res://Art/Animation/Player/Idle/Idle 6.jpeg" id="13_w3idr"]
+[ext_resource type="Texture2D" uid="uid://cie4ommnqrf7i" path="res://Art/Animation/Player/Attack/Sword.png" id="14_6ge44"]
+[ext_resource type="Texture2D" uid="uid://dvapn42s438iu" path="res://Art/Animation/Player/Idle/Idle 7.jpeg" id="14_45yc1"]
+[ext_resource type="Texture2D" uid="uid://bqe28lnkxc583" path="res://Art/Animation/Player/Idle/Idle 8.png" id="15_0f11e"]
+[ext_resource type="Texture2D" uid="uid://do0j8aroda41c" path="res://Art/Animation/Player/Idle/Idle 9.png" id="16_arjil"]
+[ext_resource type="Texture2D" uid="uid://di3o00rf2s5b2" path="res://Art/Animation/Player/Idle/Idle 10.png" id="17_k6dcf"]
+[ext_resource type="Texture2D" uid="uid://2b34q2avod2l" path="res://Art/Animation/Player/Idle/Idle 11.png" id="18_556lr"]
+[ext_resource type="Texture2D" uid="uid://cg77dlgj6iygk" path="res://Art/Animation/Player/Idle/Idle 12.png" id="19_3aiu8"]
+[ext_resource type="Texture2D" uid="uid://ihgvquuxj5di" path="res://Art/Animation/Player/Idle/Idle 13.png" id="20_bwkay"]
+[ext_resource type="Texture2D" uid="uid://76ym0ro5rdq0" path="res://Art/Animation/Player/Idle Flying/Idle Fly 1.png" id="22_1lwck"]
+[ext_resource type="Script" path="res://Main/Character/Gathering Area.gd" id="23_d8csy"]
+[ext_resource type="Texture2D" uid="uid://bkky0s06ndclq" path="res://Art/Animation/Player/Jump/Jump 3.png" id="23_kaxut"]
+[ext_resource type="Texture2D" uid="uid://cxkdssf3gpyo" path="res://Art/Animation/Player/Idle Flying/Idle Fly 2.png" id="23_qax14"]
+[ext_resource type="Texture2D" uid="uid://ee1ego3pt22l" path="res://Art/Animation/Player/Jump/Jump 4.png" id="24_hv7uh"]
+[ext_resource type="Texture2D" uid="uid://cv4okobs2t0dg" path="res://Art/Animation/Player/Idle Flying/Idle Fly 3.png" id="24_o5c72"]
+[ext_resource type="Texture2D" uid="uid://cweadpds7wrle" path="res://Art/Animation/Player/Idle Flying/Idle Fly 4.png" id="25_c30v4"]
+[ext_resource type="Texture2D" uid="uid://b0becy26w3u1m" path="res://Art/Animation/Player/Idle Flying/Idle Fly 5.png" id="26_1hi2u"]
+[ext_resource type="Texture2D" uid="uid://c56x56y7rn2va" path="res://Art/Animation/Player/Idle Flying/Idle Fly 6.png" id="27_41xks"]
+[ext_resource type="Texture2D" uid="uid://dxesqevwkm1hq" path="res://Art/Animation/Player/Walk/Walk 1.png" id="27_luvhg"]
+[ext_resource type="Texture2D" uid="uid://crdtrke7fe475" path="res://Art/Animation/Player/Idle Flying/Idle Fly 7.png" id="28_shlmy"]
+[ext_resource type="Texture2D" uid="uid://balmj4eddktql" path="res://Art/Animation/Player/Walk/walk 2.png" id="28_ykihl"]
+[ext_resource type="Texture2D" uid="uid://x1ays54pk6q2" path="res://Art/Animation/Player/Walk/Walk 3.png" id="29_7jvy4"]
+[ext_resource type="Texture2D" uid="uid://bmwihyswxu1ro" path="res://Art/Animation/Player/Idle Flying/Idle Fly 8.png" id="29_h7agu"]
+[ext_resource type="Texture2D" uid="uid://nv6mc00hh6s5" path="res://Art/Animation/Player/Walk/Walk 4.png" id="30_jkt54"]
+[ext_resource type="Texture2D" uid="uid://cc5fnm7kka106" path="res://Art/Animation/Player/Idle Flying/Idle Fly 9.png" id="30_lybwv"]
+[ext_resource type="Texture2D" uid="uid://c53swcqyari2u" path="res://Art/Animation/Player/Walk/Walk 5.png" id="31_jgjfe"]
+[ext_resource type="Texture2D" uid="uid://hfnngij6wpq5" path="res://Art/Animation/Player/Idle Flying/Idle Fly 10.png" id="31_kcuqb"]
+[ext_resource type="Texture2D" uid="uid://b85cq7nkht46g" path="res://Art/Animation/Player/Walk/Walk 6.png" id="32_h8hym"]
+[ext_resource type="Texture2D" uid="uid://bgkp1ylqunfu2" path="res://Art/Animation/Player/Idle Flying/Idle Fly 11.png" id="32_yxfo6"]
+[ext_resource type="Texture2D" uid="uid://bm5grb626sqkl" path="res://Art/Animation/Player/Walk/Walk 7.png" id="33_g68it"]
+[ext_resource type="Texture2D" uid="uid://ynukeffsciuh" path="res://Art/Animation/Player/Phasing/Phase.png" id="37_yktbj"]
+[ext_resource type="Texture2D" uid="uid://dpuwfnkghhdk8" path="res://Art/Animation/Player/Slowing/Slow 1.png" id="38_lxwmx"]
+[ext_resource type="Texture2D" uid="uid://byfsdj6o3o00t" path="res://Art/Animation/Player/Slowing/Slow 2.png" id="39_20j83"]
+[ext_resource type="Texture2D" uid="uid://b61igjefp8ap4" path="res://Art/Animation/Player/Slowing/Slow 3.png" id="40_dyhyb"]
+[ext_resource type="Texture2D" uid="uid://codc736l3lbsu" path="res://Art/Animation/Player/Slowing/Slow 4.png" id="41_77kdn"]
+[ext_resource type="Texture2D" uid="uid://c4qkfmlsbw3q5" path="res://Art/Animation/Player/Teleport/Teleport 1.png" id="42_omlio"]
+[ext_resource type="Texture2D" uid="uid://1jqvynnb4ba8" path="res://Art/Animation/Player/Teleport/Teleport 2.png" id="43_r37g6"]
+[ext_resource type="Texture2D" uid="uid://dmbc7g6j7isqf" path="res://Art/Animation/Player/Teleport/Teleport 3.png" id="44_xfnv2"]
+[ext_resource type="Texture2D" uid="uid://gyoddwek8byt" path="res://Art/Animation/Player/Teleport/Teleport 4.png" id="45_idlwv"]
+[ext_resource type="Texture2D" uid="uid://cupbg1rercyl4" path="res://Art/Animation/Player/Teleport/Teleport 5.png" id="46_tp3q7"]
+[ext_resource type="Texture2D" uid="uid://e6eidmi1dae3" path="res://Art/Animation/Player/Teleport/Teleport 6.png" id="47_xunhq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kb7eq"]
+radius = 67.2681
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkq7d"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Appearing",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gsa5k")
+}],
+"loop": true,
+"name": &"Dagger Throw",
+"speed": 14.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Faded",
+"speed": 14.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Fading",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jha7r")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tc200")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n1s2k")
+}],
+"loop": true,
+"name": &"Flying",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5fv31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_phmn0")
+}],
+"loop": true,
+"name": &"Gliding",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bqhnx")
+}],
+"loop": true,
+"name": &"Going Up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_b56sn")
+}],
+"loop": true,
+"name": &"Gremlin Mode",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_wuqk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_aviw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ew8ds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_552xb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_u382s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w3idr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_45yc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0f11e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_arjil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_k6dcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_556lr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3aiu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bwkay")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_1lwck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qax14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_o5c72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_c30v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1hi2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_41xks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_shlmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_h7agu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_lybwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_kcuqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_yxfo6")
+}],
+"loop": true,
+"name": &"Idle Flying",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_kaxut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hv7uh")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_yktbj")
+}],
+"loop": true,
+"name": &"Phase",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_lxwmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_20j83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_dyhyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_77kdn")
+}],
+"loop": true,
+"name": &"Slowing",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_omlio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_r37g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_xfnv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_idlwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_tp3q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_xunhq")
+}],
+"loop": true,
+"name": &"Teleport",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_luvhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ykihl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_7jvy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_jkt54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jgjfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_h8hym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_g68it")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o82lm"]
+radius = 88.0738
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbbwb"]
+size = Vector2(529, 286)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nvjb"]
+radius = 97.0
+height = 194.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fq1jh"]
+radius = 8.65826
+height = 153.312
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjw65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_5h874")
+}],
+"loop": true,
+"name": &"Invisible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_6ge44")
+}],
+"loop": true,
+"name": &"Visible",
+"speed": 5.0
+}]
+
+[node name="Main Character" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(98, 517)
+scale = Vector2(0.25, 0.25)
+collision_mask = 63
+script = ExtResource("1_tpodu")
+
+[node name="Character Collision" type="CollisionShape2D" parent="." groups=["Player"]]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_kb7eq")
+
+[node name="Main Camera" type="Camera2D" parent="."]
+offset = Vector2(0, -80.75)
+zoom = Vector2(2.78, 2.78)
+position_smoothing_speed = 2.5
+script = ExtResource("2_1drlv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -8)
+scale = Vector2(0.14, 0.14)
+sprite_frames = SubResource("SpriteFrames_qkq7d")
+animation = &"Teleport"
+autoplay = "Idle"
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 64
+collision_mask = 1280
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["Player"]]
+shape = SubResource("CircleShape2D_o82lm")
+
+[node name="Gathering Area" type="Area2D" parent="."]
+scale = Vector2(2.255, 2.255)
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("23_d8csy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gathering Area"]
+position = Vector2(-1.77383, -88.6918)
+shape = SubResource("RectangleShape2D_gbbwb")
+
+[node name="Pickup Area" type="Area2D" parent="."]
+scale = Vector2(1.145, 1.145)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
+shape = SubResource("CapsuleShape2D_3nvjb")
+
+[node name="Player Sword" type="Area2D" parent="." groups=["Player Weapon", "Swords"]]
+visible = false
+position = Vector2(-2, 4.99998)
+collision_layer = 128
+collision_mask = 64
+script = ExtResource("12_87hlf")
+
+[node name="SwordCollsion" type="CollisionShape2D" parent="Player Sword"]
+position = Vector2(8.5255, -94.9079)
+rotation = 0.0261799
+shape = SubResource("CapsuleShape2D_fq1jh")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player Sword"]
+position = Vector2(9.83032, -93.8679)
+scale = Vector2(1.49302, 1.3601)
+sprite_frames = SubResource("SpriteFrames_pjw65")
+animation = &"Visible"
+autoplay = "Invisible"
+
+[connection signal="attack_time_left" from="." to="Player Sword" method="_on_character_body_2d_attack_time_left"]
+[connection signal="attack_time_right" from="." to="Player Sword" method="_on_character_body_2d_attack_time_right"]
+[connection signal="reset_sword_attack" from="." to="Player Sword" method="_on_main_character_reset_sword_attack"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Gathering Area" to="." method="_on_gathering_area_body_entered"]
+[connection signal="body_exited" from="Gathering Area" to="." method="_on_gathering_area_body_exited"]
+[connection signal="body_entered" from="Pickup Area" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_exited" from="Pickup Area" to="." method="_on_pickup_area_body_exited"]
+[connection signal="player_attack_ended" from="Player Sword" to="." method="_on_player_sword_player_attack_ended"]

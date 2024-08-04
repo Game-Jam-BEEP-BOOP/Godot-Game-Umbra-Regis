@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://gc3ti8khj7vs"]
+
+[ext_resource type="Script" path="res://Levels/Level Assets/Spikes.gd" id="1_icekb"]
+[ext_resource type="Texture2D" uid="uid://bm8b8a7xif0mq" path="res://Art/Level Assets/Spikes_Temp.png" id="2_mvbhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vk0p"]
+size = Vector2(56, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0j5k"]
+size = Vector2(56, 28)
+
+[node name="Spikes" type="Area2D"]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_icekb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_5vk0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(31, 22)
+texture = ExtResource("2_mvbhe")
+
+[node name="InvisiblePlatform" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisiblePlatform"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_k0j5k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

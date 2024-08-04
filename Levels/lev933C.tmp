@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvh3ofkf4sht"]
+
+[ext_resource type="PackedScene" uid="uid://bgin5qby256rd" path="res://Levels/Level_Master.tscn" id="1_elrq0"]
+[ext_resource type="PackedScene" uid="uid://duk4iqgeaunba" path="res://Levels/Level Assets/ShadowJump.tscn" id="2_8tijc"]
+[ext_resource type="PackedScene" uid="uid://gc3ti8khj7vs" path="res://Levels/Level Assets/Spikes.tscn" id="3_vjv25"]
+[ext_resource type="PackedScene" uid="uid://cm8wtyhjvsvu1" path="res://Levels/Level Assets/rock_spawner.tscn" id="4_rqppq"]
+[ext_resource type="PackedScene" uid="uid://1ljevj8u5f0p" path="res://Levels/Level Assets/chest.tscn" id="5_ng0ng"]
+[ext_resource type="PackedScene" uid="uid://ci4hd53ol7jfm" path="res://Levels/Level Assets/HumanEnemySword.tscn" id="6_wdq5k"]
+[ext_resource type="PackedScene" uid="uid://c80uokx2jj5j7" path="res://Levels/Level Assets/human_enemy_archer.tscn" id="7_hklmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f33ee"]
+size = Vector2(6329, 76)
+
+[node name="Level1" instance=ExtResource("1_elrq0")]
+
+[node name="SceneChanger" parent="." index="0"]
+level = "level_2"
+
+[node name="Main Character" parent="." index="1"]
+position = Vector2(-1397, -101)
+
+[node name="ShadowJump" parent="." index="2" instance=ExtResource("2_8tijc")]
+position = Vector2(91, 133)
+jump_power = 1000
+
+[node name="Spikes" parent="." index="3" instance=ExtResource("3_vjv25")]
+position = Vector2(262, 133)
+
+[node name="Node2D" type="StaticBody2D" parent="." index="4"]
+collision_layer = 4
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D" index="0"]
+position = Vector2(-1100.5, 40)
+shape = SubResource("RectangleShape2D_f33ee")
+
+[node name="RockSpawner" parent="." index="5" instance=ExtResource("4_rqppq")]
+position = Vector2(2826, -1971)
+
+[node name="Chest" parent="." index="6" instance=ExtResource("5_ng0ng")]
+position = Vector2(-229, -45)
+collision_mask = 17
+
+[node name="Sword" parent="." index="7" instance=ExtResource("6_wdq5k")]
+position = Vector2(-3468, -49)
+collision_layer = 16
+collision_mask = 31
+
+[node name="GUI" parent="." index="8"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Archer" parent="." index="9" instance=ExtResource("7_hklmh")]
+position = Vector2(1264, -72)
+collision_layer = 16
+collision_mask = 31
+
+[connection signal="player_attack_ended" from="Main Character" to="Sword" method="_on_main_character_player_attack_ended"]
+[connection signal="player_attack_ended" from="Main Character" to="Archer" method="_on_main_character_player_attack_ended"]
+[connection signal="attack_end" from="Sword" to="Main Character" method="_on_sword_attack_end"]

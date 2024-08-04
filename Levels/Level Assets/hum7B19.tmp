@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c80uokx2jj5j7"]
+
+[ext_resource type="Script" path="res://Levels/Level Assets/human_enemy_archer.gd" id="1_he0q7"]
+[ext_resource type="Texture2D" uid="uid://cddjtg8h7qo1y" path="res://Art/Very Temporary Enemy/HumanArrow_Temp.jpg" id="1_w14x1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_plgcc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w14x1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7yt7"]
+size = Vector2(129, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1y6oh"]
+size = Vector2(120, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulark"]
+size = Vector2(1544, 148)
+
+[node name="HumanEnemyArcher" type="CharacterBody2D" groups=["Enemys"]]
+position = Vector2(2, 0)
+script = ExtResource("1_he0q7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.00003, 0.999985)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_plgcc")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemys"]]
+position = Vector2(1, 0)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_e7yt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1y6oh")
+
+[node name="Player_Detection" type="Area2D" parent="." groups=["Enemys"]]
+collision_mask = 66
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detection"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_ulark")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Player_Detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
