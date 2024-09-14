@@ -26,7 +26,8 @@ func _process(_delta) -> void:
 		bounce_time()
 		move_and_slide()
 		click()
-	
+		
+
 func initialise():
 	if not started:
 		main_menu_visualiser.position = start_pos
