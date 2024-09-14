@@ -1,14 +1,11 @@
 extends Node2D
 class_name State
 
-@export var animation_name:String
-@export var move_speed: float = 400
-var gravity : int = ProjectSettings.get_setting("physics/2d/default_gravity")
 #reference to parent
-var parent: Node2D
+var parent: Node2D = get_parent()
 
 func enter() -> void:
-	parent.animations.play(animation_name)
+	pass
 	
 # Called when the node enters the scene tree for the first time.
 func exit() -> void:
